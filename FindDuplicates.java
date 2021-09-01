@@ -27,38 +27,70 @@ public class FindDuplicates
 {
     public static void main(String[] args)
     {
-        int a[] = {2,3,1,2,3,2};
+//        ------------------------------------------------------------
+//        Time Complexity = O(n) & Space Complexity = O(n)
+//        int a[] = {2,3,1,2,3,2};
+//        int n = a.length;
+//        ArrayList<Integer> arl = new ArrayList<>();
+//        HashMap<Integer, Integer> map = new HashMap<>();
+//        for(int i=0;i<n;i++)
+//        {
+//            if(map.containsKey(a[i]))
+//            {
+//                map.put(a[i], map.get(a[i])+1);
+//            }
+//            else
+//            {
+//                map.put(a[i],1);
+//            }
+//        }
+//        Set<Map.Entry<Integer, Integer>> set = map.entrySet();
+//        Iterator<Map.Entry<Integer,Integer>> itr = set.iterator();
+//        {
+//            while (itr.hasNext())
+//            {
+//                Map.Entry<Integer, Integer> hmap = itr.next();
+//                if(hmap.getValue()>1)
+//                    arl.add(hmap.getKey());
+//            }
+//        }
+//        Collections.sort(arl);
+//        if(arl.isEmpty())
+//        {
+//            arl.add(-1);
+//            System.out.println(arl);
+//        }
+//        else
+//            System.out.println(arl);
+//        -----------------------------------------------------------
+//        Time Complexity = O(n) & Space Complexity = O(n)
+//        int a[] = {2,3,1,2,3,2};
+//        int n = a.length;
+//        ArrayList<Integer> arl = new ArrayList<>();
+//        for(int i : a)
+//        {
+//            int j = Math.abs(i);
+//            if(a[j]>=0)
+//                a[j] = a[j]*-1;
+//            else
+//            {
+//                if(!arl.contains(j))
+//                    arl.add(j);
+//            }
+//        }
+//        System.out.println(arl);
+//        -----------------------------------------------------------
+//        Time Complexity = O(n) & Space Complexity = O(1)
+        int a[] = {1,2,3,3,2,3};
         int n = a.length;
-        ArrayList<Integer> arl = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
         for(int i=0;i<n;i++)
         {
-            if(map.containsKey(a[i]))
-            {
-                map.put(a[i], map.get(a[i])+1);
-            }
-            else
-            {
-                map.put(a[i],1);
-            }
+            a[a[i]%n] = a[a[i]%n] + n;
         }
-        Set<Map.Entry<Integer, Integer>> set = map.entrySet();
-        Iterator<Map.Entry<Integer,Integer>> itr = set.iterator();
+        for (int i=0;i<n;i++)
         {
-            while (itr.hasNext())
-            {
-                Map.Entry<Integer, Integer> hmap = itr.next();
-                if(hmap.getValue()>1)
-                    arl.add(hmap.getKey());
-            }
+            if (a[i]/n > 1)
+                System.out.print(i+" ");
         }
-        Collections.sort(arl);
-        if(arl.isEmpty())
-        {
-            arl.add(-1);
-            System.out.println(arl);
-        }
-        else
-            System.out.println(arl);
     }
 }
